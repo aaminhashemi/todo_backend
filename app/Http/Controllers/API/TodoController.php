@@ -35,7 +35,7 @@ class TodoController extends Controller
         $todo=Todo::where('id',$request->id)->first();
         if ($todo){
             $todo->delete();
-            return response()->json([],Response::HTTP_OK);
+            return response()->json(['message' => 'Todo deleted successfully.'],Response::HTTP_OK);
         }
         return response()->json([],Response::HTTP_NOT_ACCEPTABLE);
     }
