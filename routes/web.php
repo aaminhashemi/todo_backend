@@ -9,3 +9,6 @@ Route::get('/api/todo/list', [TodoController::class,'index']);
 Route::post('/api/todo/update', [TodoController::class,'update']);
 Route::delete('/api/todo/delete', [TodoController::class,'delete']);
 Route::delete('/api/todo/delete', [TodoController::class,'delete']);
+Route::get('/test', function () {
+    return 'Test route works!';
+});
