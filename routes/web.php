@@ -7,6 +7,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::post('/api/todo/create', [TodoController::class,'save']);
-Route::get('/api//todo/list', [TodoController::class,'index']);
-Route::post('/api//todo/update', [TodoController::class,'update']);
-Route::delete('/api//todo/delete', [TodoController::class,'delete']);
+Route::get('/api/todo/list', [TodoController::class,'index']);
+Route::post('/api/todo/update', [TodoController::class,'update']);
+Route::delete('/api/todo/delete', [TodoController::class,'delete']);
+Route::delete('/api/todo/delete', [TodoController::class,'delete']);
