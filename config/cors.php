@@ -17,7 +17,7 @@ return [
     'allowed_methods' => ['*'],
 
     'allowed_origins' => [
-        'https://todo-frontend-tmrg.onrender.com',
+         '*', /*'https://todo-frontend-tmrg.onrender.com'*/
     ],
 
     'allowed_headers' => ['*'],
