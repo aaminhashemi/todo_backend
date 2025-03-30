@@ -13,8 +13,8 @@ class TodoController extends Controller
     {
         try {
             $insert = Todo::create([
-                'title' => $request->json('title'),
-                'due' => str_replace('/', '-', $request->json('due')),
+                'title' => $request->title,
+                'due' => str_replace('/', '-', $request->due),
                 'status' => 'pending',
             ]);
         } catch (\Exception $e) {
