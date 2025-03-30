@@ -30,7 +30,7 @@ class TodoController extends Controller
 
     public function index()
     {
-        $todos=Todo::all();
+        $todos=Todo::orderBy('id','DESC')->get();
         return response()->json(['data' => $todos]);
     }
 
