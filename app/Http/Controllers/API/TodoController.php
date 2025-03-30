@@ -43,4 +43,16 @@ class TodoController extends Controller
         }
         return response()->json([],Response::HTTP_NOT_ACCEPTABLE);
     }
+
+    public function Update(Request $request)
+    {
+        $todo=Todo::where('id',$request->id)->first();
+        if ($todo){
+            $todo->update([
+                'status'=>$request->status
+            ]);
+            return response()->json(['message' => 'Todo updated successfully.'],Response::HTTP_OK);
+        }
+        return response()->json([],Response::HTTP_NOT_ACCEPTABLE);
+    }
 }
