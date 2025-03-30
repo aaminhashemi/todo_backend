@@ -11,11 +11,15 @@ class TodoController extends Controller
 {
     public function save(Request $request)
     {
-        $insert=Todo::create([
-            'title'=>$request->json('title'),
-            'due'=>str_replace('/','-',$request->json('due')),
-            'status'=>'pending',
-        ]);
+        try {
+            $insert = Todo::create([
+                'title' => $request->json('title'),
+                'due' => str_replace('/', '-', $request->json('due')),
+                'status' => 'pending',
+            ]);
+        } catch (\Exception $e) {
+            dd($e->getMessage()); // Dump the error message
+        }
         if ($insert){
             return response()->json(['data'=>$insert],Response::HTTP_CREATED);
         }else{
