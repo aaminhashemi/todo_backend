@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::post('/todo/create', [TodoController::class,'save']);
-Route::get('/todo/list', [TodoController::class,'index']);
-Route::post('/todo/update', [TodoController::class,'update']);
-Route::post('/todo/delete', [TodoController::class,'delete']);
+Route::post('/todo/create', [TodoController::class,'save'])->name('api_create_todo');
+Route::get('/todo/list', [TodoController::class,'index'])->name('api_list_todo');
+Route::post('/todo/update', [TodoController::class,'update'])->name('api_update_todo');
+Route::post('/todo/delete', [TodoController::class,'delete'])->name('api_delete_todo');
