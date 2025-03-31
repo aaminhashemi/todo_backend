@@ -41,7 +41,7 @@ class TodoController extends Controller
             $todo->delete();
             return response()->json(['message' => 'Todo deleted successfully.'],Response::HTTP_OK);
         }
-        return response()->json([],Response::HTTP_NOT_ACCEPTABLE);
+        return response()->json(['message' => 'Todo not found.'], Response::HTTP_NOT_FOUND);
     }
 
     public function Update(Request $request)
