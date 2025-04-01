@@ -1,22 +1,74 @@
-# Laravel 11 with a Docker PHP Image
-
-A demo repo for deploying a Laravel PHP application on [Render](https://render.com) using Docker. You can follow the getting started tutorial [here](https://render.com/docs/deploy-php-laravel-docker).
+# Todo project (backend)
 
 
-## Deployment
+A Laravel-based project using PostgreSQL, tested with GitHub Actions.
 
-1. [Create](https://dashboard.render.com/new/database) a new PostgreSQL database on Render and copy the internal DB URL to use below.
+---
 
-2. Fork this repo to your own GitHub account.
+## Project Status
+- ✅ Continuous Integration (CI) with GitHub Actions
+- ✅ Database: PostgreSQL 16
+- ✅ Automated Tests with PHPUnit
 
-3. Create a new **Web Service** on Render, and give Render's GitHub app permission to access your new repo.
+---
 
-4. Select `Docker` for the environment, and add the following environment variable under the *Advanced* section:
+## Setup & Installation
 
-   | Key             | Value           |
-   | --------------- | --------------- |
-   | `APP_KEY`  | Copy the output of `php artisan key:generate --show` |
-   | `DATABASE_URL`  | The **internal database url** for the database you created above. |
-   | `DB_CONNECTION`  | `pgsql` |
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/aaminhashemi/todo_backend.git
+cd todo_backend
+```
 
-That's it! Your Laravel 11 app will be live on your Render URL as soon as the build finishes. You can test it out by registering and logging in.
+### 2️⃣ Install Dependencies
+```bash
+composer install
+```
+
+### 3️⃣ Set Up Environment Variables
+Copy the example `.env` file and update it:
+```bash
+cp .env.example .env
+```
+Update database settings in `.env` (if different):
+```env
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=your_database_name
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
+
+### 4️⃣ Generate Application Key
+```bash
+php artisan key:generate
+```
+
+### 5️⃣ Run Database Migrations
+```bash
+php artisan migrate
+```
+
+---
+
+## Running Tests
+Run unit and feature tests using:
+```bash
+php artisan test
+```
+For detailed output:
+```bash
+php artisan test --coverage
+```
+
+---
+
+## CI/CD & GitHub Actions
+This project uses **GitHub Actions** to automate testing. The workflow file is located at:
+```
+.github/workflows/backend.yml
+```
+You can view test results in the [Actions Tab](https://github.com/aaminhashemi/todo_backend/actions).
+
+---
