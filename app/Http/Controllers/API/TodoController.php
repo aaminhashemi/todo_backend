@@ -22,14 +22,14 @@ class TodoController extends Controller
     public function save(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'due' => 'required|date_format:Y/m/d',
+            'due' => 'required|date_format:Y-m-d',
             'title' => 'required|string|max:255',
         ]);
         if ($validator->passes()) {
             $newTodo = $this->repository->save($request);
             return ($newTodo) ? response()->json(['data' => $newTodo], Response::HTTP_CREATED) : response()->json([], Response::HTTP_INTERNAL_SERVER_ERROR);
         } else {
-            return response()->json([], Response::HTTP_NOT_ACCEPTABLE);
+            return response()->json(['data' => $validator->errors()], Response::HTTP_NOT_ACCEPTABLE);
         }
     }
 

@@ -11,7 +11,7 @@ class TodoRepository
     {
         $todo = Todo::create([
             'title' => $data->title,
-            'due' => Carbon::createFromFormat('Y/m/d', $data->due)->format('Y-m-d'),
+            'due' => $data->due,
             'status' => 'pending',
         ]);
         return $todo;
